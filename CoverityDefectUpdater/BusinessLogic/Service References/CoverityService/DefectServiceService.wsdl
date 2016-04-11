@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://ws.coverity.com/v9" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="DefectServiceService" targetNamespace="http://ws.coverity.com/v9" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="DefectServicePortBinding_MTOM_Policy">
+    <ns1:OptimizedMimeSerialization xmlns:ns1="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" wsp:Optional="true" />
+  </wsp:Policy>
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://coverity.infosoft.no:8080/ws/v9/defectservice?xsd=1" namespace="http://ws.coverity.com/v9" />
+    </xsd:schema>
+  </types>
+  <message name="getMergedDefectsForStreams">
+    <part name="parameters" element="tns:getMergedDefectsForStreams" />
+  </message>
+  <message name="getMergedDefectsForStreamsResponse">
+    <part name="parameters" element="tns:getMergedDefectsForStreamsResponse" />
+  </message>
+  <message name="CovRemoteServiceException">
+    <part name="fault" element="tns:CoverityFault" />
+  </message>
+  <message name="getMergedDefectDetectionHistory">
+    <part name="parameters" element="tns:getMergedDefectDetectionHistory" />
+  </message>
+  <message name="getMergedDefectDetectionHistoryResponse">
+    <part name="parameters" element="tns:getMergedDefectDetectionHistoryResponse" />
+  </message>
+  <message name="getTriageHistory">
+    <part name="parameters" element="tns:getTriageHistory" />
+  </message>
+  <message name="getTriageHistoryResponse">
+    <part name="parameters" element="tns:getTriageHistoryResponse" />
+  </message>
+  <message name="updateStreamDefects">
+    <part name="parameters" element="tns:updateStreamDefects" />
+  </message>
+  <message name="updateStreamDefectsResponse">
+    <part name="parameters" element="tns:updateStreamDefectsResponse" />
+  </message>
+  <message name="updateDefectInstanceProperties">
+    <part name="parameters" element="tns:updateDefectInstanceProperties" />
+  </message>
+  <message name="updateDefectInstancePropertiesResponse">
+    <part name="parameters" element="tns:updateDefectInstancePropertiesResponse" />
+  </message>
+  <message name="getStreamDefects">
+    <part name="parameters" element="tns:getStreamDefects" />
+  </message>
+  <message name="getStreamDefectsResponse">
+    <part name="parameters" element="tns:getStreamDefectsResponse" />
+  </message>
+  <message name="getFileContents">
+    <part name="parameters" element="tns:getFileContents" />
+  </message>
+  <message name="getFileContentsResponse">
+    <part name="parameters" element="tns:getFileContentsResponse" />
+  </message>
+  <message name="getTrendRecordsForProject">
+    <part name="parameters" element="tns:getTrendRecordsForProject" />
+  </message>
+  <message name="getTrendRecordsForProjectResponse">
+    <part name="parameters" element="tns:getTrendRecordsForProjectResponse" />
+  </message>
+  <message name="getComponentMetricsForProject">
+    <part name="parameters" element="tns:getComponentMetricsForProject" />
+  </message>
+  <message name="getComponentMetricsForProjectResponse">
+    <part name="parameters" element="tns:getComponentMetricsForProjectResponse" />
+  </message>
+  <message name="createMergedDefect">
+    <part name="parameters" element="tns:createMergedDefect" />
+  </message>
+  <message name="createMergedDefectResponse">
+    <part name="parameters" element="tns:createMergedDefectResponse" />
+  </message>
+  <message name="getMergedDefectHistory">
+    <part name="parameters" element="tns:getMergedDefectHistory" />
+  </message>
+  <message name="getMergedDefectHistoryResponse">
+    <part name="parameters" element="tns:getMergedDefectHistoryResponse" />
+  </message>
+  <message name="getMergedDefectsForSnapshotScope">
+    <part name="parameters" element="tns:getMergedDefectsForSnapshotScope" />
+  </message>
+  <message name="getMergedDefectsForSnapshotScopeResponse">
+    <part name="parameters" element="tns:getMergedDefectsForSnapshotScopeResponse" />
+  </message>
+  <message name="getMergedDefectsForProjectScope">
+    <part name="parameters" element="tns:getMergedDefectsForProjectScope" />
+  </message>
+  <message name="getMergedDefectsForProjectScopeResponse">
+    <part name="parameters" element="tns:getMergedDefectsForProjectScopeResponse" />
+  </message>
+  <message name="updateTriageForCIDsInTriageStore">
+    <part name="parameters" element="tns:updateTriageForCIDsInTriageStore" />
+  </message>
+  <message name="updateTriageForCIDsInTriageStoreResponse">
+    <part name="parameters" element="tns:updateTriageForCIDsInTriageStoreResponse" />
+  </message>
+  <portType name="DefectService">
+    <operation name="getMergedDefectsForStreams">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectsForStreamsRequest" message="tns:getMergedDefectsForStreams" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectsForStreamsResponse" message="tns:getMergedDefectsForStreamsResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectsForStreams/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+    <operation name="getMergedDefectDetectionHistory">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectDetectionHistoryRequest" message="tns:getMergedDefectDetectionHistory" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectDetectionHistoryResponse" message="tns:getMergedDefectDetectionHistoryResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectDetectionHistory/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+    <operation name="getTriageHistory">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/getTriageHistoryRequest" message="tns:getTriageHistory" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/getTriageHistoryResponse" message="tns:getTriageHistoryResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/getTriageHistory/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+    <operation name="updateStreamDefects">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/updateStreamDefectsRequest" message="tns:updateStreamDefects" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/updateStreamDefectsResponse" message="tns:updateStreamDefectsResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/updateStreamDefects/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+    <operation name="updateDefectInstanceProperties">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/updateDefectInstancePropertiesRequest" message="tns:updateDefectInstanceProperties" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/updateDefectInstancePropertiesResponse" message="tns:updateDefectInstancePropertiesResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/updateDefectInstanceProperties/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+    <operation name="getStreamDefects">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/getStreamDefectsRequest" message="tns:getStreamDefects" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/getStreamDefectsResponse" message="tns:getStreamDefectsResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/getStreamDefects/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+    <operation name="getFileContents">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/getFileContentsRequest" message="tns:getFileContents" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/getFileContentsResponse" message="tns:getFileContentsResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/getFileContents/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+    <operation name="getTrendRecordsForProject">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/getTrendRecordsForProjectRequest" message="tns:getTrendRecordsForProject" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/getTrendRecordsForProjectResponse" message="tns:getTrendRecordsForProjectResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/getTrendRecordsForProject/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+    <operation name="getComponentMetricsForProject">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/getComponentMetricsForProjectRequest" message="tns:getComponentMetricsForProject" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/getComponentMetricsForProjectResponse" message="tns:getComponentMetricsForProjectResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/getComponentMetricsForProject/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+    <operation name="createMergedDefect">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/createMergedDefectRequest" message="tns:createMergedDefect" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/createMergedDefectResponse" message="tns:createMergedDefectResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/createMergedDefect/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+    <operation name="getMergedDefectHistory">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectHistoryRequest" message="tns:getMergedDefectHistory" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectHistoryResponse" message="tns:getMergedDefectHistoryResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectHistory/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+    <operation name="getMergedDefectsForSnapshotScope">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectsForSnapshotScopeRequest" message="tns:getMergedDefectsForSnapshotScope" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectsForSnapshotScopeResponse" message="tns:getMergedDefectsForSnapshotScopeResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectsForSnapshotScope/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+    <operation name="getMergedDefectsForProjectScope">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectsForProjectScopeRequest" message="tns:getMergedDefectsForProjectScope" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectsForProjectScopeResponse" message="tns:getMergedDefectsForProjectScopeResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/getMergedDefectsForProjectScope/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+    <operation name="updateTriageForCIDsInTriageStore">
+      <input wsam:Action="http://ws.coverity.com/v9/DefectService/updateTriageForCIDsInTriageStoreRequest" message="tns:updateTriageForCIDsInTriageStore" />
+      <output wsam:Action="http://ws.coverity.com/v9/DefectService/updateTriageForCIDsInTriageStoreResponse" message="tns:updateTriageForCIDsInTriageStoreResponse" />
+      <fault wsam:Action="http://ws.coverity.com/v9/DefectService/updateTriageForCIDsInTriageStore/Fault/CovRemoteServiceException" name="CovRemoteServiceException" message="tns:CovRemoteServiceException" />
+    </operation>
+  </portType>
+  <binding name="DefectServicePortBinding" type="tns:DefectService">
+    <wsp:PolicyReference URI="#DefectServicePortBinding_MTOM_Policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getMergedDefectsForStreams">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getMergedDefectDetectionHistory">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getTriageHistory">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="updateStreamDefects">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="updateDefectInstanceProperties">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getStreamDefects">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getFileContents">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getTrendRecordsForProject">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getComponentMetricsForProject">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="createMergedDefect">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getMergedDefectHistory">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getMergedDefectsForSnapshotScope">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getMergedDefectsForProjectScope">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="updateTriageForCIDsInTriageStore">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CovRemoteServiceException">
+        <soap:fault use="literal" name="CovRemoteServiceException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="DefectServiceService">
+    <port name="DefectServicePort" binding="tns:DefectServicePortBinding">
+      <soap:address location="http://coverity.infosoft.no:8080/ws/v9/defectservice" />
+    </port>
+  </service>
+</definitions>

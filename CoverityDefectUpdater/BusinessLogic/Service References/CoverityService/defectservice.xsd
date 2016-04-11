@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://ws.coverity.com/v9" targetNamespace="http://ws.coverity.com/v9" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CoverityFault" type="tns:CovRemoteServiceException" />
+  <xs:element name="createMergedDefect" type="tns:createMergedDefect" />
+  <xs:element name="createMergedDefectResponse" type="tns:createMergedDefectResponse" />
+  <xs:element name="getComponentMetricsForProject" type="tns:getComponentMetricsForProject" />
+  <xs:element name="getComponentMetricsForProjectResponse" type="tns:getComponentMetricsForProjectResponse" />
+  <xs:element name="getFileContents" type="tns:getFileContents" />
+  <xs:element name="getFileContentsResponse" type="tns:getFileContentsResponse" />
+  <xs:element name="getMergedDefectDetectionHistory" type="tns:getMergedDefectDetectionHistory" />
+  <xs:element name="getMergedDefectDetectionHistoryResponse" type="tns:getMergedDefectDetectionHistoryResponse" />
+  <xs:element name="getMergedDefectHistory" type="tns:getMergedDefectHistory" />
+  <xs:element name="getMergedDefectHistoryResponse" type="tns:getMergedDefectHistoryResponse" />
+  <xs:element name="getMergedDefectsForProjectScope" type="tns:getMergedDefectsForProjectScope" />
+  <xs:element name="getMergedDefectsForProjectScopeResponse" type="tns:getMergedDefectsForProjectScopeResponse" />
+  <xs:element name="getMergedDefectsForSnapshotScope" type="tns:getMergedDefectsForSnapshotScope" />
+  <xs:element name="getMergedDefectsForSnapshotScopeResponse" type="tns:getMergedDefectsForSnapshotScopeResponse" />
+  <xs:element name="getMergedDefectsForStreams" type="tns:getMergedDefectsForStreams" />
+  <xs:element name="getMergedDefectsForStreamsResponse" type="tns:getMergedDefectsForStreamsResponse" />
+  <xs:element name="getStreamDefects" type="tns:getStreamDefects" />
+  <xs:element name="getStreamDefectsResponse" type="tns:getStreamDefectsResponse" />
+  <xs:element name="getTrendRecordsForProject" type="tns:getTrendRecordsForProject" />
+  <xs:element name="getTrendRecordsForProjectResponse" type="tns:getTrendRecordsForProjectResponse" />
+  <xs:element name="getTriageHistory" type="tns:getTriageHistory" />
+  <xs:element name="getTriageHistoryResponse" type="tns:getTriageHistoryResponse" />
+  <xs:element name="updateDefectInstanceProperties" type="tns:updateDefectInstanceProperties" />
+  <xs:element name="updateDefectInstancePropertiesResponse" type="tns:updateDefectInstancePropertiesResponse" />
+  <xs:element name="updateStreamDefects" type="tns:updateStreamDefects" />
+  <xs:element name="updateStreamDefectsResponse" type="tns:updateStreamDefectsResponse" />
+  <xs:element name="updateTriageForCIDsInTriageStore" type="tns:updateTriageForCIDsInTriageStore" />
+  <xs:element name="updateTriageForCIDsInTriageStoreResponse" type="tns:updateTriageForCIDsInTriageStoreResponse" />
+  <xs:complexType name="getMergedDefectDetectionHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mergedDefectIdDataObj" type="tns:mergedDefectIdDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="streamIds" type="tns:streamIdDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="mergedDefectIdDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cid" type="xs:long" />
+      <xs:element minOccurs="0" name="mergeKey" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="streamIdDataObj">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMergedDefectDetectionHistoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:defectDetectionHistoryDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="defectDetectionHistoryDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="defectDetection" type="xs:string" />
+      <xs:element minOccurs="0" name="detection" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="inCurrentSnapshot" type="xs:boolean" />
+      <xs:element minOccurs="0" name="snapshotId" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="streams" nillable="true" type="tns:streamIdDataObj" />
+      <xs:element minOccurs="0" name="userName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CovRemoteServiceException">
+    <xs:sequence>
+      <xs:element name="errorCode" type="xs:int" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getComponentMetricsForProject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="projectId" type="tns:projectIdDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="componentIds" type="tns:componentIdDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="projectIdDataObj">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="componentIdDataObj">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getComponentMetricsForProjectResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:componentMetricsDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="componentMetricsDataObj">
+    <xs:sequence>
+      <xs:element name="blankLineCount" type="xs:int" />
+      <xs:element name="codeLineCount" type="xs:int" />
+      <xs:element name="commentLineCount" type="xs:int" />
+      <xs:element name="componentId" type="tns:componentIdDataObj" />
+      <xs:element name="dismissedCount" type="xs:int" />
+      <xs:element name="fixedCount" type="xs:int" />
+      <xs:element minOccurs="0" name="metricsDate" type="xs:dateTime" />
+      <xs:element name="newCount" type="xs:int" />
+      <xs:element name="outstandingCount" type="xs:int" />
+      <xs:element name="totalCount" type="xs:int" />
+      <xs:element name="triagedCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateDefectInstanceProperties">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="defectInstanceId" type="tns:defectInstanceIdDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="properties" type="tns:propertySpecDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="defectInstanceIdDataObj">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="propertySpecDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="key" type="xs:string" />
+      <xs:element minOccurs="0" name="value" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateDefectInstancePropertiesResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getTriageHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mergedDefectIdDataObj" type="tns:mergedDefectIdDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="triageStoreIds" type="tns:triageStoreIdDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="triageStoreIdDataObj">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTriageHistoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:triageHistoryDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="triageHistoryDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attributes" nillable="true" type="tns:defectStateAttributeValueDataObj" />
+      <xs:element minOccurs="0" name="id" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="defectStateAttributeValueDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="attributeDefinitionId" type="tns:attributeDefinitionIdDataObj" />
+      <xs:element minOccurs="0" name="attributeValueId" type="tns:attributeValueIdDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="attributeDefinitionIdDataObj">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="attributeValueIdDataObj">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateTriageForCIDsInTriageStore">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="triageStore" type="tns:triageStoreIdDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mergedDefectIdDataObjs" type="tns:mergedDefectIdDataObj" />
+      <xs:element minOccurs="0" name="defectState" type="tns:defectStateSpecDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="defectStateSpecDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="defectStateAttributeValues" nillable="true" type="tns:defectStateAttributeValueDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateTriageForCIDsInTriageStoreResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getTrendRecordsForProject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="projectId" type="tns:projectIdDataObj" />
+      <xs:element minOccurs="0" name="filterSpec" type="tns:projectTrendRecordFilterSpecDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="projectTrendRecordFilterSpecDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="endDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="startDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTrendRecordsForProjectResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:projectMetricsDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="projectMetricsDataObj">
+    <xs:sequence>
+      <xs:element name="blankLineCount" type="xs:int" />
+      <xs:element name="codeLineCount" type="xs:int" />
+      <xs:element name="commentLineCount" type="xs:int" />
+      <xs:element name="dismissedCount" type="xs:int" />
+      <xs:element name="fixedCount" type="xs:int" />
+      <xs:element name="inspectedCount" type="xs:int" />
+      <xs:element minOccurs="0" name="metricsDate" type="xs:dateTime" />
+      <xs:element name="newCount" type="xs:int" />
+      <xs:element name="outstandingCount" type="xs:int" />
+      <xs:element name="projectId" type="tns:projectIdDataObj" />
+      <xs:element name="resolvedCount" type="xs:int" />
+      <xs:element name="totalCount" type="xs:int" />
+      <xs:element name="triagedCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createMergedDefect">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mergeKey" type="xs:string" />
+      <xs:element minOccurs="0" name="dateOriginated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="externalPreventVersion" type="xs:string" />
+      <xs:element minOccurs="0" name="internalPreventVersion" type="xs:string" />
+      <xs:element minOccurs="0" name="checkerName" type="xs:string" />
+      <xs:element minOccurs="0" name="domainName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createMergedDefectResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="updateStreamDefects">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="streamDefectIds" type="tns:streamDefectIdDataObj" />
+      <xs:element minOccurs="0" name="defectStateSpec" type="tns:defectStateSpecDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="streamDefectIdDataObj">
+    <xs:sequence>
+      <xs:element name="defectTriageId" type="xs:long" />
+      <xs:element name="defectTriageVerNum" type="xs:int" />
+      <xs:element name="id" type="xs:long" />
+      <xs:element name="verNum" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateStreamDefectsResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getMergedDefectsForSnapshotScope">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="projectId" type="tns:projectIdDataObj" />
+      <xs:element minOccurs="0" name="filterSpec" type="tns:snapshotScopeDefectFilterSpecDataObj" />
+      <xs:element minOccurs="0" name="pageSpec" type="tns:pageSpecDataObj" />
+      <xs:element minOccurs="0" name="snapshotScope" type="tns:snapshotScopeSpecDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="snapshotScopeDefectFilterSpecDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="actionNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attributeDefinitionValueFilterMap" nillable="true" type="tns:attributeDefinitionValueFilterMapDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="checkerCategoryList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="checkerList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="checkerTypeList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="cidList" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="classificationNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="componentIdExclude" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="componentIdList" nillable="true" type="tns:componentIdDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="cweList" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="externalReference" type="xs:string" />
+      <xs:element minOccurs="0" name="fileName" type="xs:string" />
+      <xs:element minOccurs="0" name="firstDetectedEndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="firstDetectedStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="fixTargetNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="functionMergeName" type="xs:string" />
+      <xs:element minOccurs="0" name="functionName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="impactNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="issueComparison" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="issueKindList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lastDetectedEndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lastDetectedStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="legacyNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="maxOccurrenceCount" type="xs:int" />
+      <xs:element minOccurs="0" name="mergeExtra" type="xs:string" />
+      <xs:element minOccurs="0" name="mergeKey" type="xs:string" />
+      <xs:element minOccurs="0" name="minOccurrenceCount" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ownerNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ownerNamePattern" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="severityNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="statusNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="streamExcludeNameList" nillable="true" type="tns:streamIdDataObj" />
+      <xs:element minOccurs="0" default="ALL" name="streamExcludeQualifier" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="streamIncludeNameList" nillable="true" type="tns:streamIdDataObj" />
+      <xs:element minOccurs="0" default="ANY" name="streamIncludeQualifier" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="attributeDefinitionValueFilterMapDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="attributeDefinitionId" type="tns:attributeDefinitionIdDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attributeValueIds" nillable="true" type="tns:attributeValueIdDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pageSpecDataObj">
+    <xs:sequence>
+      <xs:element name="pageSize" type="xs:int" />
+      <xs:element name="sortAscending" type="xs:boolean" />
+      <xs:element minOccurs="0" name="sortField" type="xs:string" />
+      <xs:element name="startIndex" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="snapshotScopeSpecDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" default="false" name="compareOutdatedStreams" type="xs:boolean" />
+      <xs:element minOccurs="0" default="" name="compareSelector" type="xs:string" />
+      <xs:element minOccurs="0" default="false" name="showOutdatedStreams" type="xs:boolean" />
+      <xs:element default="last()" name="showSelector" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMergedDefectsForSnapshotScopeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:mergedDefectsPageDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="mergedDefectsPageDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mergedDefectIds" nillable="true" type="tns:mergedDefectIdDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mergedDefects" nillable="true" type="tns:mergedDefectDataObj" />
+      <xs:element minOccurs="0" name="totalNumberOfRecords" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="mergedDefectDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="checkerName" type="xs:string" />
+      <xs:element minOccurs="0" name="cid" type="xs:long" />
+      <xs:element minOccurs="0" name="componentName" type="xs:string" />
+      <xs:element minOccurs="0" name="cwe" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="defectStateAttributeValues" nillable="true" type="tns:defectStateAttributeValueDataObj" />
+      <xs:element minOccurs="0" name="displayCategory" type="xs:string" />
+      <xs:element minOccurs="0" name="displayImpact" type="xs:string" />
+      <xs:element minOccurs="0" name="displayIssueKind" type="xs:string" />
+      <xs:element minOccurs="0" name="displayType" type="xs:string" />
+      <xs:element minOccurs="0" name="domain" type="xs:string" />
+      <xs:element minOccurs="0" name="filePathname" type="xs:string" />
+      <xs:element minOccurs="0" name="firstDetected" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="firstDetectedBy" type="xs:string" />
+      <xs:element minOccurs="0" name="firstDetectedDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="firstDetectedSnapshotId" type="xs:long" />
+      <xs:element minOccurs="0" name="firstDetectedStream" type="xs:string" />
+      <xs:element minOccurs="0" name="firstDetectedTarget" type="xs:string" />
+      <xs:element minOccurs="0" name="firstDetectedVersion" type="xs:string" />
+      <xs:element minOccurs="0" name="functionDisplayName" type="xs:string" />
+      <xs:element minOccurs="0" name="functionName" type="xs:string" />
+      <xs:element minOccurs="0" name="issueKind" type="xs:string" />
+      <xs:element minOccurs="0" name="lastDetected" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lastDetectedDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="lastDetectedSnapshotId" type="xs:long" />
+      <xs:element minOccurs="0" name="lastDetectedStream" type="xs:string" />
+      <xs:element minOccurs="0" name="lastDetectedTarget" type="xs:string" />
+      <xs:element minOccurs="0" name="lastDetectedVersion" type="xs:string" />
+      <xs:element minOccurs="0" name="lastFixed" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lastTriaged" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="mergeKey" type="xs:string" />
+      <xs:element minOccurs="0" name="occurrenceCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getStreamDefects">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mergedDefectIdDataObjs" type="tns:mergedDefectIdDataObj" />
+      <xs:element minOccurs="0" name="filterSpec" type="tns:streamDefectFilterSpecDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="streamDefectFilterSpecDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="defectStateEndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="defectStateStartDate" type="xs:dateTime" />
+      <xs:element name="includeDefectInstances" type="xs:boolean" />
+      <xs:element name="includeHistory" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="streamIdList" nillable="true" type="tns:streamIdDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getStreamDefectsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:streamDefectDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="streamDefectDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="checkerName" type="xs:string" />
+      <xs:element minOccurs="0" name="cid" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="defectInstances" nillable="true" type="tns:defectInstanceDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="defectStateAttributeValues" nillable="true" type="tns:defectStateAttributeValueDataObj" />
+      <xs:element minOccurs="0" name="domain" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="history" nillable="true" type="tns:defectStateDataObj" />
+      <xs:element minOccurs="0" name="id" type="tns:streamDefectIdDataObj" />
+      <xs:element minOccurs="0" name="streamId" type="tns:streamIdDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="defectInstanceDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="events" nillable="true" type="tns:eventDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="properties" nillable="true" type="tns:propertyDataObj" />
+      <xs:element minOccurs="0" name="category" type="tns:localizedValueDataObj" />
+      <xs:element minOccurs="0" name="checkerName" type="xs:string" />
+      <xs:element minOccurs="0" name="component" type="xs:string" />
+      <xs:element minOccurs="0" name="cwe" type="xs:int" />
+      <xs:element minOccurs="0" name="domain" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="eventSetCaptions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="extra" type="xs:string" />
+      <xs:element minOccurs="0" name="function" type="tns:functionInfoDataObj" />
+      <xs:element minOccurs="0" name="id" type="tns:defectInstanceIdDataObj" />
+      <xs:element minOccurs="0" name="impact" type="tns:localizedValueDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="issueKinds" nillable="true" type="tns:localizedValueDataObj" />
+      <xs:element minOccurs="0" name="localEffect" type="xs:string" />
+      <xs:element minOccurs="0" name="longDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="type" type="tns:localizedValueDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="events" nillable="true" type="tns:eventDataObj" />
+      <xs:element minOccurs="0" name="eventDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="eventKind" type="xs:string" />
+      <xs:element name="eventNumber" type="xs:int" />
+      <xs:element name="eventSet" type="xs:int" />
+      <xs:element minOccurs="0" name="eventTag" type="xs:string" />
+      <xs:element minOccurs="0" name="fileId" type="tns:fileIdDataObj" />
+      <xs:element minOccurs="0" name="id" type="xs:long" />
+      <xs:element name="lineNumber" type="xs:int" />
+      <xs:element name="main" type="xs:boolean" />
+      <xs:element minOccurs="0" name="moreInformationId" type="xs:string" />
+      <xs:element minOccurs="0" name="pathCondition" type="xs:string" />
+      <xs:element name="polarity" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fileIdDataObj">
+    <xs:sequence>
+      <xs:element name="contentsMD5" type="xs:string" />
+      <xs:element name="filePathname" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="propertyDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="key" type="xs:string" />
+      <xs:element minOccurs="0" name="value" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="localizedValueDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="displayName" type="xs:string" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="functionInfoDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fileId" type="tns:fileIdDataObj" />
+      <xs:element minOccurs="0" name="functionDisplayName" type="xs:string" />
+      <xs:element minOccurs="0" name="functionMangledName" type="xs:string" />
+      <xs:element minOccurs="0" name="functionMergeName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="defectStateDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dateCreated" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="defectStateAttributeValues" nillable="true" type="tns:defectStateAttributeValueDataObj" />
+      <xs:element minOccurs="0" name="userCreated" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMergedDefectsForStreams">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="streamIds" type="tns:streamIdDataObj" />
+      <xs:element minOccurs="0" name="filterSpec" type="tns:mergedDefectFilterSpecDataObj" />
+      <xs:element minOccurs="0" name="pageSpec" type="tns:pageSpecDataObj" />
+      <xs:element minOccurs="0" name="snapshotScope" type="tns:snapshotScopeSpecDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="mergedDefectFilterSpecDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="cidList" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="filenamePatternList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="componentIdList" nillable="true" type="tns:componentIdDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="statusNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="classificationNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="actionNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="fixTargetNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="severityNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="legacyNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ownerNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="checkerList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="cweList" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="checkerCategoryList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="checkerTypeList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="impactList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="issueKindList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attributeDefinitionValueFilterMap" nillable="true" type="tns:attributeDefinitionValueFilterMapDataObj" />
+      <xs:element minOccurs="0" name="componentIdExclude" type="xs:boolean" />
+      <xs:element minOccurs="0" name="defectPropertyKey" type="xs:string" />
+      <xs:element minOccurs="0" name="defectPropertyPattern" type="xs:string" />
+      <xs:element minOccurs="0" name="externalReferencePattern" type="xs:string" />
+      <xs:element minOccurs="0" name="firstDetectedEndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="firstDetectedStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="functionNamePattern" type="xs:string" />
+      <xs:element minOccurs="0" name="lastDetectedEndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lastDetectedStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lastFixedEndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lastFixedStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lastTriagedEndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lastTriagedStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="maxCid" type="xs:long" />
+      <xs:element minOccurs="0" name="maxOccurrenceCount" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mergedDefectIdDataObjs" nillable="true" type="tns:mergedDefectIdDataObj" />
+      <xs:element minOccurs="0" name="minCid" type="xs:long" />
+      <xs:element minOccurs="0" name="minOccurrenceCount" type="xs:int" />
+      <xs:element minOccurs="0" name="ownerNamePattern" type="xs:string" />
+      <xs:element minOccurs="0" name="snapshotComparisonField" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="streamExcludeNameList" nillable="true" type="tns:streamIdDataObj" />
+      <xs:element minOccurs="0" default="ALL" name="streamExcludeQualifier" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="streamIncludeNameList" nillable="true" type="tns:streamIdDataObj" />
+      <xs:element minOccurs="0" default="ANY" name="streamIncludeQualifier" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMergedDefectsForStreamsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:mergedDefectsPageDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getFileContents">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="streamId" type="tns:streamIdDataObj" />
+      <xs:element minOccurs="0" name="fileId" type="tns:fileIdDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getFileContentsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:fileContentsDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fileContentsDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contents" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="fileId" type="tns:fileIdDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMergedDefectsForProjectScope">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="projectId" type="tns:projectIdDataObj" />
+      <xs:element minOccurs="0" name="filterSpec" type="tns:projectScopeDefectFilterSpecDataObj" />
+      <xs:element minOccurs="0" name="pageSpec" type="tns:pageSpecDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="projectScopeDefectFilterSpecDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="actionNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="checkerCategoryList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="checkerList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="checkerTypeList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="cidList" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="classificationNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="componentIdExclude" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="componentIdList" nillable="true" type="tns:componentIdDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="cweList" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="firstDetectedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="firstDetectedEndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="firstDetectedStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="fixTargetNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="impactNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="issueKindList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lastDetectedEndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lastDetectedStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="legacyNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ownerNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ownerNamePattern" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="severityNameList" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMergedDefectsForProjectScopeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:mergedDefectsPageDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMergedDefectHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mergedDefectIdDataObj" type="tns:mergedDefectIdDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="streamIds" type="tns:streamIdDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMergedDefectHistoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:defectChangeDataObj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="defectChangeDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="affectedStreams" nillable="true" type="tns:streamIdDataObj" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attributeChanges" nillable="true" type="tns:fieldChangeDataObj" />
+      <xs:element minOccurs="0" name="comments" type="xs:string" />
+      <xs:element minOccurs="0" name="dateModified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="userModified" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fieldChangeDataObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fieldName" type="xs:string" />
+      <xs:element minOccurs="0" name="newValue" type="xs:string" />
+      <xs:element minOccurs="0" name="oldValue" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
