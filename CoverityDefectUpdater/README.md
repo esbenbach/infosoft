@@ -13,7 +13,7 @@ Access to TFS and a Coverity Connect server running API version 9.
 To use it, compile it and change the coverity connect hostname in the app.config file
 Run the executable with the required command line parameters such as:
 
-  CoverityDefectUpdater --user <CoverityConnectUser> --password <CoverityConnectPassword> -s <CoverityStreamName> -c <TFSProjectCollectionUrl> -p <TFSProjectName> -b <TFSBranchRoot>
+	CoverityDefectUpdater --user <CoverityConnectUser> --password <CoverityConnectPassword> -s <CoverityStreamName> -c <TFSProjectCollectionUrl> -p <TFSProjectName> -b <TFSBranchRoot>
 
 And an example:
 
