@@ -19,6 +19,7 @@
             var tfsCollectionUrl = options.AddRequiredVariable<string>("c|collection", "TFS Project Collection URL, such as http://yourtfs:8080/tfs/ProjectCollection");
             var tfsProjectName = options.AddRequiredVariable<string>("p|project", "TFS Project Name");
             var tfsBranchRoot = options.AddRequiredVariable<string>("b|branch", "TFS Branch Root Path relative to the project, such as /Main/Version1");
+            var notificationViewName = options.AddVariableList<string>("v|view", "Name of Coverity View definition that should have notifications executed after updating owners. Can be specified multiple times");
 
             var consoleManager = new ConsoleManager("Coverity Defect Updater", options, "?|help", "Show help message and exit");
 
@@ -34,11 +35,14 @@
             var defectsClient = new CoverityDefectsClient(serviceFactory);
             var tfsHistoryClient = new TfsHistoryClient(tfsCollectionUrl.Value);
             var defectUpdate = new DefectUpdater(configurationClient, defectsClient, tfsHistoryClient, simulation, legacy);
+            var viewNotifier = new ViewNotifier(configurationClient, simulation);
 
-            foreach(var stream in streams)
+            foreach (var stream in streams)
             {
                 defectUpdate.AssignUnassignedDefectsAsync(stream, tfsProjectName.Value, tfsBranchRoot.Value).GetAwaiter().GetResult();
             }
+
+            viewNotifier.ExecuteNotificationsAsync(notificationViewName.Values).GetAwaiter().GetResult();
 
             return 0;
         }

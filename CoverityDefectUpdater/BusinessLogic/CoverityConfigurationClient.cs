@@ -97,5 +97,19 @@
                 return response.@return;
             }
         }
+
+        /// <summary>
+        /// Executes view notifcation
+        /// </summary>
+        /// <param name="viewName">Name of the view.</param>
+        /// <returns>A task representing the being done.</returns>
+        public async Task ExecuteViewNotifcationAsync(string viewName)
+        {
+            using (var service = this.serviceFactory.CreateConfigurationServiceClient())
+            {
+                var request = new executeNotificationRequest(viewName);
+                await service.executeNotificationAsync(request);
+            }
+        }
     }
 }

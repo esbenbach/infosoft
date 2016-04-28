@@ -256,6 +256,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="TfsHistoryClient.cs" />
+    <Compile Include="ViewNotifier.cs" />
     <Compile Include="WssSecurityBehavior.cs" />
     <Compile Include="WssSecurityHeader.cs" />
   </ItemGroup>
