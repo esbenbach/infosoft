@@ -84,7 +84,15 @@ $watch = [Diagnostics.StopWatch]::StartNew();
 
 Import-Module WebAdministration
 
-$configuration = Parse-Psd1 "$PSScriptRoot\SiteConfigurations.psd1"
+
+if ($PSVersionTable.PSVersion.Major -ge 5)
+{
+    $configuration = Parse-Psd1 "$PSScriptRoot\SiteConfigurations.psd1"
+}
+else
+{
+    Import-LocalizedData -BaseDirectory $PSScriptRoot -FileName "SiteConfigurations.psd1" -BindingVariable configuration
+}
 
 $applicationFilePath = "$wwwrootPath\Version";
 
