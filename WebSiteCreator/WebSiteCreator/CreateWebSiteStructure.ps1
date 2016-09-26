@@ -132,9 +132,10 @@ foreach($item in $configuration.SiteConfigurationMapping.GetEnumerator())
 	if ((Get-WebApplication -Name $siteName) -eq $null)
 	{
 		New-WebAppPool $siteName;
-		Set-ItemProperty "IIS:\apppools\$siteName" -Name $enable32Bit -Value "True"
 		New-WebApplication -Name $applicationName -Site $rootSiteName -ApplicationPool $siteName -PhysicalPath $siteFilePath
 	}
+      
+    Set-ItemProperty "IIS:\apppools\$siteName" -Name "enable32BitAppOnWin64" -Value "True"
 
 	cmd /c mklink /d "$siteFilePath\bin" "$applicationFilePath\bin";
 	cmd /c mklink "$siteFilePath\Global.asax" "$applicationFilePath\Global.asax";
