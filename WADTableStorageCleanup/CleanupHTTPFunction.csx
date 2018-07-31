@@ -16,7 +16,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     try
     {       
         // Retrieve storage account from connection-string
-        CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=sfdiagsccdicthce3fe4;AccountKey=715VyJtuBZzmpYIIEhUbyZwfvfqxmMWWYL3FZGtOcNYcdYGa1hD+dRPg3TSuiI3JIFva1a9ghsZdlN2U8J0PiQ==;EndpointSuffix=core.windows.net");
+        CloudStorageAccount storageAccount = CloudStorageAccount.Parse("StorageConnectionStringHere");
         CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
         var tables = new string[] {"WADServiceFabricSystemEventTable", "WADServiceFabricReliableServiceEventTable", "WADServiceFabricReliableServiceEventTable", "WADPerformanceCountersTable", "WADWindowsEventLogsTable"};
